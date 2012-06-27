@@ -18,7 +18,7 @@ setup(
     version=version,
     description='Archetypes Widget for User and Group Selection, works '
                 'with many users.',
-    long_description=open('README.rst').read() + open('HISTORY.txt').read() + open('LICENSE.txt').read(),
+    long_description=open('README.rst').read() + open('docs/HISTORY.txt').read() + open('docs/LICENSE.txt').read(),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
@@ -33,9 +33,10 @@ setup(
     author_email='dev@bluedynamics.com',
     url='https://github.com/collective/Products.UserAndGroupSelectionWidget',
     license='BSD',
-    packages=find_packages('src'),
-    package_dir = {'': 'src'},
-    namespace_packages=['Products', ],
+    #packages=find_packages('src'),
+    #package_dir = {'': 'src'},
+    packages=find_packages(exclude=['ez_setup']),
+    namespace_packages=['Products'],
     include_package_data=True,
     zip_safe=False,
     install_requires=[
