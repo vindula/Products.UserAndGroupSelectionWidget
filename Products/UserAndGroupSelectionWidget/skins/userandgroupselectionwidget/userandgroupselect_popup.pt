@@ -92,7 +92,7 @@
 			width: 600px;
 		}
 		
-		.height100px { height: 100px; }
+		/*.height100px { height: 100px; }*/
 		.overFlowAuto { overflow: auto; }
 		.width100perc { width: 100%; }
 		.width80perc { width: 80%; }
@@ -231,7 +231,7 @@
             </thead>
             <tbody>
             	<tal:rep tal:repeat="entry entries">
-	                <tr tal:define="oddrow repeat/entry/odd" tal:attributes="class python:test(oddrow, 'bkgOdd', None)">
+	                <tr tal:define="oddrow repeat/entry/even" tal:attributes="class python:test(oddrow, 'bkgOdd', '')">
 	                    <td class="textCenter">
 	                        <input type="radio" name="uids" id="#"
 	                               tal:condition="python: not multiVal and not view.groupsOnly()"
