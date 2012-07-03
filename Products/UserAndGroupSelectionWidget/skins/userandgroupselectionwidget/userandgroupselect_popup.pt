@@ -76,6 +76,35 @@
 	    }
         }">
     </script>
+	
+	<style>
+		* {
+			font-size: 12px;
+			line-height: 1.5em;
+			font-family: Helvetica ;
+			margin: 0;
+		    padding: 0;
+			text-decoration: none;
+		}
+		
+		body {
+			margin: 15px;
+			width: 600px;
+		}
+		
+		.height100px { height: 100px; }
+		.overFlowAuto { overflow: auto; }
+		.width100perc { width: 100%; }
+		.width80perc { width: 80%; }
+		.textCenter { text-align: center; }
+		.textTable { padding: 2px 2px 2px 6px; }
+		.marginBt10 { margin-bottom: 10px; }
+		.marginRg10 { margin-right: 10px; }
+		.borderGray { border: 1px solid #CCC; }
+		.borderRadius { border-radius: 10px 10px 10px 10px; }
+		.bkgOdd { background-color: #CCC; }
+		
+	</style>
     
 </head>
 
@@ -87,16 +116,18 @@
     <form action="#" 
           tal:attributes="action string:${view/getObjectUrl}" 
           method="post"
-          style="white-space:nowrap">
+          style="white-space:nowrap"
+		  class="width100perc">
     
         <input type="hidden" name="typeOrDottedname" tal:attributes="value request/typeOrDottedname|nothing" />
         <input type="hidden" name="ignoreContext" tal:attributes="value request/ignoreContext|nothing" />
 
-        <div>
+        <div class="marginBt10">
           <strong><span i18n:translate="text_member_search">Search Member:</span></strong><br />
 
           <input id="search-box"
                  tabindex=""
+				 class="marginRg10"
                  name="searchabletext"
                  type="text"
                  size="15"
@@ -118,7 +149,7 @@
 
         </div>
 
-        <div>
+        <div class="marginBt10">
           <strong><span i18n:translate="text_existing_groups">Groups:</span></strong><br />
 
           <select name="selectgroup" size="5" id="userandgroupselect-group-filter" multiple="multiple"
@@ -137,7 +168,7 @@
           </select>
 
           <select name="selectgroup" size="1" id="userandgroupselect-group-filter"
-                  tal:condition="python: not view.multiValued()">
+                  tal:condition="python: not view.multiValued()" class="marginRg10 width80perc height100px">
             <tal:item repeat="group python: view.getGroupsForPulldown()">
                 <tal:option define="selected python: view.isSelected('selectgroup', group[0])">
                     <option tal:condition="python: not selected"
@@ -169,7 +200,7 @@
     </form>
 
 
-    <div tal:define="resultBatch view/getBatch">
+    <div tal:define="resultBatch view/getBatch" class="marginBt10">
         <div id="personal-addressbook-alphabatch" tal:condition="resultBatch/showBatch">
             <span tal:repeat="page resultBatch/getPages">
                 <a href="#"
@@ -184,7 +215,7 @@
             </span>
         </div>
     
-        <table tal:define="entries resultBatch/getResults" cellpadding="0" cellspacing="0">
+        <table tal:define="entries resultBatch/getResults" cellpadding="0" cellspacing="0" class="width80perc height100px borderGray borderRadius">
             <thead>
                 <th>
                   <input class="noborder"
@@ -196,23 +227,25 @@
                          tal:condition="multiVal"
                          tal:attributes="src string:${context/portal_url}/select_all_icon.gif"/>
                 </th>
-                <th i18n:translate="listingheader_name">Name</th>
+                <th i18n:translate="listingheader_name" class="textTable">Name</th>
             </thead>
             <tbody>
-                <tr tal:repeat="entry entries">
-                    <td>
-                        <input type="radio" name="uids" id="#"
-                               tal:condition="python: not multiVal and not view.groupsOnly()"
-                               tal:attributes="id entry/id;
-                                               value entry/fullname;
-                                               onclick string:javascript:addSelectedUsers(this);" />
-                        <input type="checkbox" name="uids" id="#" class="noborder"
-                               tal:condition="python: multiVal and not view.groupsOnly()"
-                               tal:attributes="id entry/id;
-                                               value entry/fullname;" />
-                    </td>
-                    <td tal:content="entry/fullname">fullname</td>
-                 </tr>
+            	<tal:rep tal:repeat="entry entries">
+	                <tr tal:define="oddrow repeat/entry/odd" tal:attributes="class python:test(oddrow, 'bkgOdd', None)">
+	                    <td class="textCenter">
+	                        <input type="radio" name="uids" id="#"
+	                               tal:condition="python: not multiVal and not view.groupsOnly()"
+	                               tal:attributes="id entry/id;
+	                                               value entry/fullname;
+	                                               onclick string:javascript:addSelectedUsers(this);" />
+	                        <input type="checkbox" name="uids" id="#" class="noborder"
+	                               tal:condition="python: multiVal and not view.groupsOnly()"
+	                               tal:attributes="id entry/id;
+	                                               value entry/fullname;" />
+	                    </td>
+	                    <td tal:content="entry/fullname">fullname</td>
+	                </tr>
+				</tal:rep>
             </tbody>
           </table>
     </div>
