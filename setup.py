@@ -43,7 +43,7 @@ setup(
         'setuptools',
         'zope.interface',
         'zope.component',
-        'zope.schema>=4.1.1',
+        'zope.schema',
         'Zope2',
         'AccessControl',
         'Products.CMFCore',
