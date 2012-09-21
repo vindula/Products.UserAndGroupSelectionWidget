@@ -8,3 +8,7 @@ Changelog
 1.1.0 - 2012-06-27
 ---------------------
 - Adição da tradução para o portugues brasileiro
+
+1.1.1 - 2012-09-21
+----------------------
+- Correção Ticket #169 - Layout

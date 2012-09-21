@@ -23,7 +23,7 @@ function userandgroupselect_openBrowser(portal_url,
     defines += 'menubar=no,';
     defines += 'scrollbars=yes,';
     defines += 'resizable=yes,';
-    defines += 'width=500,';
+    defines += 'width=660,';
     defines += 'height=550';
     window.open(url,
                 'userandgroupselect_popup',
