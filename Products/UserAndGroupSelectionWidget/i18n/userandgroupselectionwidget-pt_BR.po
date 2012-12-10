@@ -26,6 +26,9 @@ msgstr "Eliminar usuários selecionados"
 msgid "Remove user"
 msgstr "Eliminar usuário"
 
+msgid "Add me"
+msgstr "Adicione-me"
+
 #: ../skins/userandgroupselectionwidget/userandgroupselect_popup.pt
 msgid "Search"
 msgstr "Buscar"

@@ -96,7 +96,7 @@
                    class="searchButton"
                    value="Browse..."
                    onClick=""
-                   i18n:attributes="value value_buscar"
+                   i18n:attributes="value"
                    tal:define="groupId groupId | string:'';
                                enableSearch enableSearch | python:1"
                    tal:attributes="onClick string:javascript:userandgroupselect_openBrowser('${context/absolute_url}', '${context/portal_type}', '${fieldId}', '${groupId}')"
